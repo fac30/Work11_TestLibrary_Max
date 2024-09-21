@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Testing</title>
+  </head>
+  <body>
+    <h1>Open the console</h1>
+
+    <script>
+      // the function we're testing
+      function square(x) {
+        return x * x;
+      }
+
+      // Testing 1
+      console.log("Testing 1");
+      const testVariable = 5;
+      const result1 = square(testVariable);
+      const expected1 = 25;
+      const testResult1 = (result1 === expected1);
+      console.log(`Testing square() for ${testVariable}:
+Expected: ${expected1}
+Result: ${result1}
+Pass: ${testResult1}`);
+      if (testResult1) {
+        console.log("Test passed")
+      } else {
+        console.log("Test failed")
+      }
+
+      // Testing 2
+      console.log("Testing 2");
+      function equal(result, expected) {
+        const testResult = (result === expected);
+        console.info(`Testing square() for ${testVariable}:
+Expected: ${expected}
+Result: ${result}
+Pass: ${testResult}`);
+        if (testResult) {
+          console.info("Test passed")
+        } else {
+          console.error("Test failed")
+        }
+      }
+      // test with expected value
+      equal(result1, expected1);
+      // test with wrong value
+      resultWrong = square(3);
+      expectedWrong = 10;
+      equal(resultWrong, expectedWrong); 
+
+      // Testing 3
+      console.log("Testing 3");
+      function test(name, testFunction) {
+        console.group(name);
+        testFunction();
+        console.groupEnd();
+      }
+      test("Correctly squares integers", () => {
+        const result = square(2);
+        const expected = 4;
+        equal(result, expected);
+      });
+      test("Correctly squares integers", () => {
+        const result = square(3.5);
+        const expected = 12.5;
+        equal(result, expected);
+      });
+            
+    </script>
+  </body>
+</html>
